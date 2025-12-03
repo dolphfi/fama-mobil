@@ -424,13 +424,13 @@ const PartnerDashboard = () => {
                                 <div className={`w-full flex items-center gap-3 p-1 rounded-lg cursor-pointer outline-none hover:bg-gray-50 ${isCollapsed ? 'justify-center' : ''}`}>
                                     <Avatar className="h-9 w-9 flex-shrink-0">
                                         <AvatarFallback className="bg-green-600 text-white text-sm font-medium">
-                                            PC
+                                            {user?.name ? user.name.substring(0, 2).toUpperCase() : 'PC'}
                                         </AvatarFallback>
                                     </Avatar>
                                     {!isCollapsed && (
                                         <>
                                             <div className="flex-1 min-w-0 text-left">
-                                                <p className="text-sm font-medium text-gray-900 truncate">Pharmacie Centrale</p>
+                                                <p className="text-sm font-medium text-gray-900 truncate">{user?.name || 'Pharmacie Centrale'}</p>
                                                 <p className="text-xs text-gray-500 truncate">Partenaire</p>
                                             </div>
                                             <MoreVertical className="h-4 w-4 text-gray-400 flex-shrink-0" />
@@ -441,9 +441,9 @@ const PartnerDashboard = () => {
                             <DropdownMenuContent className="w-56" align={isCollapsed ? "start" : "end"} side="right" sideOffset={10}>
                                 <DropdownMenuLabel className="font-normal">
                                     <div className="flex flex-col space-y-1">
-                                        <p className="text-sm font-medium leading-none">Pharmacie Centrale</p>
+                                        <p className="text-sm font-medium leading-none">{user?.name || 'Pharmacie Centrale'}</p>
                                         <p className="text-xs leading-none text-muted-foreground">
-                                            contact@pharmacie-centrale.com
+                                            {user?.email || 'contact@pharmacie-centrale.com'}
                                         </p>
                                     </div>
                                 </DropdownMenuLabel>
