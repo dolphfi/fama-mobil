@@ -22,14 +22,14 @@ const KolaboMembership = () => {
                     </div>
 
                     <div className="flex-1 w-full md:w-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 border-t md:border-t-0 border-gray-300 pt-4 md:pt-0">
-                        <div className="md:border-l border-gray-300 md:pl-8">
+                        <div className="border-b md:border-b-0 border-gray-300 pb-4 md:pb-0 md:border-l md:pl-8">
                             <div className="font-bold text-gray-700 mb-1">Kolabo Plan</div>
                             <div className="text-lg text-gray-900 mb-1">Monthly $7.49 <span className="text-sm text-gray-600">(plus tax)</span></div>
                             <Link to="#" className="text-customBlue text-sm hover:underline flex items-center">
                                 Save $20.88 with Annual plan <ChevronDown className="h-3 w-3 ml-1" />
                             </Link>
                         </div>
-                        <div className="md:border-l border-gray-300 md:pl-8">
+                        <div className="border-b md:border-b-0 border-gray-300 pb-4 md:pb-0 md:border-l md:pl-8">
                             <div className="font-bold text-gray-700 mb-1">Renewal Date</div>
                             <div className="text-lg text-gray-900 mb-1">December 17, 2025</div>
                             <Link to="#" className="text-customBlue text-sm hover:underline flex items-center">

@@ -61,6 +61,7 @@ const Cart = () => {
                     <div className="flex flex-col lg:flex-row gap-6">
                         {/* Left Column - Product List (Scrollable) */}
                         <div className="flex-1 lg:w-2/3 space-y-4">
+
                             {items.map((item) => (
                                 <div key={item.id} className="bg-white rounded-lg p-6 shadow-sm">
                                     {/* Seller Info */}
@@ -80,17 +81,17 @@ const Cart = () => {
                                     </div>
 
                                     {/* Product Info */}
-                                    <div className="flex gap-4">
-                                        <Link to={`/product/${item.id}`} className="flex-shrink-0">
+                                    <div className="flex flex-col sm:flex-row gap-4">
+                                        <Link to={`/product/${item.id}`} className="flex-shrink-0 mx-auto sm:mx-0">
                                             <img
                                                 src={item.image}
                                                 alt={item.name}
-                                                className="w-32 h-32 object-cover rounded border"
+                                                className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded border"
                                             />
                                         </Link>
 
                                         <div className="flex-1">
-                                            <div className="flex justify-between">
+                                            <div className="flex flex-col sm:flex-row justify-between gap-2">
                                                 <div className="flex-1">
                                                     {item.quantity > 1 && (
                                                         <span className="inline-block px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded border border-blue-200 mb-2">
@@ -99,11 +100,11 @@ const Cart = () => {
                                                     )}
                                                     <Link
                                                         to={`/product/${item.id}`}
-                                                        className="text-lg font-medium hover:text-primary block mb-2"
+                                                        className="text-lg font-medium hover:text-primary block mb-2 line-clamp-2"
                                                     >
                                                         {item.name}
                                                     </Link>
-                                                    <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                                                    <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{item.description}</p>
 
                                                     {item.inStock ? (
                                                         <p className="text-sm text-green-600 mb-2">In Stock</p>
@@ -112,8 +113,8 @@ const Cart = () => {
                                                     )}
                                                 </div>
 
-                                                <div className="text-right">
-                                                    <div className="text-2xl font-bold mb-2">
+                                                <div className="text-left sm:text-right">
+                                                    <div className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">
                                                         ${(item.price * item.quantity).toFixed(2)}
                                                     </div>
                                                     {item.quantity > 1 && (
@@ -125,13 +126,13 @@ const Cart = () => {
                                             </div>
 
                                             {/* Quantity and Shipping */}
-                                            <div className="flex items-center gap-4 mt-4">
+                                            <div className="flex flex-wrap items-center gap-4 mt-4">
                                                 <div className="flex items-center gap-2">
                                                     <span className="text-sm font-medium">Qty</span>
                                                     <select
                                                         value={item.quantity}
                                                         onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
-                                                        className="border rounded px-3 py-1 text-sm"
+                                                        className="border rounded px-3 py-1 text-sm bg-gray-50"
                                                     >
                                                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
                                                             <option key={num} value={num}>{num}</option>
@@ -146,13 +147,13 @@ const Cart = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="text-sm text-muted-foreground">
+                                                <div className="text-sm text-muted-foreground w-full sm:w-auto mt-2 sm:mt-0">
                                                     Delivery in {getDeliveryEstimate()}
                                                 </div>
                                             </div>
 
                                             {/* Action Buttons */}
-                                            <div className="flex items-center gap-4 mt-4 pt-4 border-t">
+                                            <div className="flex flex-wrap items-center gap-4 mt-4 pt-4 border-t">
                                                 <button className="text-sm text-blue-600 hover:underline font-medium">
                                                     Buy it now
                                                 </button>

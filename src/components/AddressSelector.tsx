@@ -63,18 +63,18 @@ const AddressSelector: React.FC<AddressSelectorProps> = ({ isOpen, onClose, onSe
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4">
             {/* Backdrop */}
             <div
-                className="fixed inset-0 bg-black/50"
+                className="fixed inset-0 bg-black/50 transition-opacity"
                 onClick={onClose}
             />
 
             {/* Modal */}
-            <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="relative bg-white w-full sm:max-w-lg max-h-[85vh] flex flex-col rounded-t-xl sm:rounded-xl shadow-2xl">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b">
-                    <h2 className="text-2xl font-bold">Choose your location</h2>
+                <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+                    <h2 className="text-lg font-bold">Choose your location</h2>
                     <button
                         onClick={onClose}
                         className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -83,9 +83,9 @@ const AddressSelector: React.FC<AddressSelectorProps> = ({ isOpen, onClose, onSe
                     </button>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                    <p className="text-sm text-muted-foreground mb-6">
+                {/* Scrollable Content */}
+                <div className="overflow-y-auto p-4">
+                    <p className="text-sm text-muted-foreground mb-4">
                         Delivery options and delivery speeds may vary for different locations
                     </p>
 
@@ -95,7 +95,7 @@ const AddressSelector: React.FC<AddressSelectorProps> = ({ isOpen, onClose, onSe
                             <div
                                 key={address.id}
                                 onClick={() => setSelectedAddressId(address.id)}
-                                className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${selectedAddressId === address.id
+                                className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${selectedAddressId === address.id
                                     ? 'border-primary bg-blue-50'
                                     : 'border-gray-200 hover:border-gray-300'
                                     }`}
@@ -108,8 +108,8 @@ const AddressSelector: React.FC<AddressSelectorProps> = ({ isOpen, onClose, onSe
                                         className="mt-1"
                                     />
                                     <div className="flex-1">
-                                        <div className="font-medium">{address.name} {address.zip}</div>
-                                        <div className="text-sm text-muted-foreground">
+                                        <div className="font-medium text-sm">{address.name} {address.zip}</div>
+                                        <div className="text-xs text-muted-foreground">
                                             {address.street}, {address.city} {address.state} {address.zip}
                                         </div>
                                         {address.isDefault && (
@@ -160,7 +160,7 @@ const AddressSelector: React.FC<AddressSelectorProps> = ({ isOpen, onClose, onSe
                     </div>
 
                     {/* Ship Outside US */}
-                    <div className="text-sm text-center text-muted-foreground mb-6">
+                    <div className="text-sm text-center text-muted-foreground mb-4">
                         or ship outside the US
                     </div>
 
